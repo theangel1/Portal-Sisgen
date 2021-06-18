@@ -1,0 +1,74 @@
+﻿@page
+@model RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<!--<h1>@ViewData["Title"]</h1>-->
+    <br />
+<h4>Crear nuevo usuario</h4>
+<hr />
+
+<!--FORMULARIO DE REGISTRO DE USUARIO SOLO SE PUEDE VER DESDE ADMIN-->
+<form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+    <div class="container ">
+
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="col-8 ">
+            <label asp-for="Input.Nombre"></label>
+            <input asp-for="Input.Nombre" class="form-control" />
+            <span asp-validation-for="Input.Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="col-8 ">
+            <label asp-for="Input.Email"></label>
+            <input asp-for="Input.Email" class="form-control" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+
+        <div class="col-8 ">
+            <label asp-for="Input.PhoneNumber">Telefono</label>
+            <input asp-for="Input.PhoneNumber" class="form-control" />
+            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+        </div>
+
+        <div class="col-8 ">
+            <label asp-for="Input.Password">Contraseña</label>
+            <input asp-for="Input.Password" class="form-control" />
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+
+        <div class="col-8 ">
+            <label asp-for="Input.ConfirmPassword">Confirmar Contraseña</label>
+            <input asp-for="Input.ConfirmPassword" class="form-control" />
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        @* COMBO PARA RAZON SOCIAL SE CARGA DE LA BASE DE DATOS  SE TRAE EL OBJETO DE LISTA DESDE EL CS *@
+        <div class="col-8 ">
+            <label>Razon Social</label>
+            @Html.DropDownList("Input.RazonSocial", new SelectList((System.Collections.IEnumerable)
+           ViewData["tempContribuyente"], "Sis_contribuyente_razon", "Sis_contribuyente_razon"), new { @class = "form-control" })
+        </div>
+        <br />
+
+
+        <div class="col-8 ">
+            <div class="col-5 offset-2">
+                <button type="submit" class="btn btn-primary form-control">Registrar</button>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

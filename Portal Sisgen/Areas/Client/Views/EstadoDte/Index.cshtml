@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="ContainerEstadoDte" class="container">
+    <!-- barra gris -->
+    <div class="p-1 text-left rounded mb-3 col-lg-12 bg-secondary text-white">
+        <strong style="padding-left:5px"> Consultar Estado DTE </strong>
+    </div>
+
+    <label id="labelSeleccionarDte" for="SeleccionarDte">Seleccione tipo DTE</label>
+    <div class="row">
+        <!-- Tipo de DTE -->
+        <div class="col-lg-6 col-sm-2">
+            <select id="ddlDte" class="form-control">
+                <option>Facuta Electrónica</option>
+                <option>Facuta Exenta Electrónica</option>
+                <option>Nota De Crédito Electrónica</option>
+                <option>Nota De Dédito Electrónica</option>
+                <option>Guía De Despacho Electrónica</option>
+            </select>
+        </div>
+
+    </div>
+
+    <br />
+
+    <label id="labelSeleccionarDte" for="SeleccionarDte">
+        Ingrese Folio o Folios (separados por coma para folios consecutivos o por guión para rango)
+    </label>
+    <div class="row">
+        <div class="col-lg-6 col-sm-2">
+            <input name="ConsultarFolio" id="ConsultarFolio" class="form-control" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-6 col-sm-2">
+            <button type="button" id="BuscarDte" class="btn btn-primary text-white">Buscar Documento</button>
+        </div>
+
+    </div>
+
+</div>

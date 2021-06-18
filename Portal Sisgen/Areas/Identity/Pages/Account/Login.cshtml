@@ -1,0 +1,43 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<center>
+    <h2 class="text-info">Log In</h2>
+    <h5>Ingrese sus credenciales para acceder el sistema.</h5>
+</center> 
+
+    <div class="row col-sm offset-4" align="center"  >
+        <div class="col-md-4">
+            <section>
+                <form id="account" method="post">
+                    <hr />                    
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Input.Email"></label>
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Password"> Contraseña</label>
+                        <input asp-for="Input.Password" class="form-control" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-outline-primary">Ingresar</button>
+                    </div>                  
+                </form>
+            </section>
+        </div>
+      
+    </div>
+
+</>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

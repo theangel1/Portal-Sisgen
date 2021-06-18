@@ -1,0 +1,116 @@
+﻿@using Portal_Sisgen.Utility
+
+<!DOCTYPE html>
+<html lang="es-cl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Portal Sisgen</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    </environment>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/AdminLTE.css" />
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-navy border-bottom box-shadow mb-3">
+            <div class="container">
+
+                <a class="navbar-brand" asp-area="Client" asp-controller="Home" asp-action="Index">Portal Sisgen</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+
+                    <ul class="navbar-nav flex-grow-1 ">
+
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="Client" asp-controller="LibroCompras" asp-action="Index">
+                                <i class="fas fa-search" style="color:darkorange"></i>
+                                &nbsp;test
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="Client" asp-controller="Cesiones" asp-action="Index">
+                                <i class="fas fa-money-check-alt" style="color:darkorange"></i>
+                                &nbsp;Cesiones
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown text-white-50">
+                            <a class="nav-link dropdown-toggle " href="#" id="navbarDropDownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-file-alt" style="color:darkorange"></i>
+                                &nbsp;Mis DTE
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
+                                <a class="dropdown-item" asp-action="Index" asp-controller="ConsultarVentas" asp-area="Client">Consultar Ventas </a>
+                                <a class="dropdown-item" asp-action="Index" asp-controller="ConsultarCompras" asp-area="Client">Consultar Compras</a>
+                            </div>
+                        </li>
+
+                        @* REGISTRO DE CLIENTES SOLO SE VE EN LA CAPA ADMIN *@
+
+                        @if (User.IsInRole(SD.AdminUser))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link " asp-area="Admin" asp-controller="User" asp-action="Index">
+                                    <i class="far fa-user" style="color:darkorange"></i>
+                                    &nbsp;Usuarios
+                                </a>
+                            </li>
+                        }
+                    </ul>
+
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <partial name="_CookieConsentPartial" />
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    
+    @*
+        SOLUCIONAR PROBLEMA CON FOOTER PARA QUE NO SE SOBREPONGA EN LOS FORMULARIOS         
+        <footer class="border-top pl-3 footer text-muted">
+        <div class="container">
+            &copy; @DateTime.Now.Year - Portal Sisgen - <a asp-area="" asp-controller="Home" asp-action="Privacy" >Privacidad</a>
+        </div>
+    </footer>*@
+
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+
+    <environment exclude="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
